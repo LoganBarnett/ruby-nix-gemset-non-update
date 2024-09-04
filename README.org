@@ -16,13 +16,13 @@ Reproduction steps:
 
 1. Use =direnv allow= to bless this configuration and make it run everything.
 2. Use =gem list | grep cow= to see if the =ruby_cowsay= gem is installed.
-   a. If it's not, installed, you've already reproduced the issue.
+   1. If it's not, installed, you've already reproduced the issue.
 3. Assuming the gem is present, let's try upgrading one of the gems.
-   a. First run =gem list | grep monad-oxide= and see that it is =0.7.0=.
-   b. Update =Gemfile= to use =0.10.0= of =monad-oxide=.
-   c. Run =bundle lock=.
-   d. Run =bundix --lock=.
-   e. Run =direnv allow=.
-   f. Observe the =monad-oxide= gem is no longer =0.7.0= in =gemset.nix=.
-   g. If it is still =0.7.0=, the new version failed to take effect and you have
+   1. First run =gem list | grep monad-oxide= and see that it is =0.7.0=.
+   2. Update =Gemfile= to use =0.10.0= of =monad-oxide=.
+   3. Run =bundle lock=.
+   4. Run =bundix --lock=.
+   5. Run =direnv allow=.
+   6. Observe the =monad-oxide= gem is no longer =0.7.0= in =gemset.nix=.
+   7. If it is still =0.7.0=, the new version failed to take effect and you have
       reproduced the issue.
