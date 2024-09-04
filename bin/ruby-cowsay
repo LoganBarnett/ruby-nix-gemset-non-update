@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+# This will fail if the gem is missing.
+require 'ruby_cowsay'
+
+puts(Cow.new().say(%q{Moo, I say!}))

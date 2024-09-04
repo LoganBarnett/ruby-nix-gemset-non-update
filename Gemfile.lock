@@ -1,0 +1,16 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    monad-oxide (0.7.0)
+    ruby_cowsay (0.1.3)
+
+PLATFORMS
+  arm64-darwin-23
+  ruby
+
+DEPENDENCIES
+  monad-oxide (= 0.7.0)
+  ruby_cowsay
+
+BUNDLED WITH
+   2.5.11

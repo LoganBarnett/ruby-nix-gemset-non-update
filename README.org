@@ -1,0 +1,28 @@
+#+title:     ruby-nix gemset non-update issue
+#+author:    Logan Barnett
+#+email:     logustus@gmail.com
+#+date:      <2024-09-04 Wed>
+#+language:  en
+#+file_tags:
+#+tags:
+
+This provides a reproduction for [[https://github.com/inscapist/ruby-nix/issues/31][ruby-nix#31]] - Gems are not loading as local
+gems.
+
+The thought here is that it has something to do with =gemset.nix= not getting
+picked up during evaluation, so changes to it don't load new gems locally.
+
+Reproduction steps:
+
+1. Use =direnv allow= to bless this configuration and make it run everything.
+2. Use =gem list | grep cow= to see if the =ruby_cowsay= gem is installed.
+   a. If it's not, installed, you've already reproduced the issue.
+3. Assuming the gem is present, let's try upgrading one of the gems.
+   a. First run =gem list | grep monad-oxide= and see that it is =0.7.0=.
+   b. Update =Gemfile= to use =0.10.0= of =monad-oxide=.
+   c. Run =bundle lock=.
+   d. Run =bundix --lock=.
+   e. Run =direnv allow=.
+   f. Observe the =monad-oxide= gem is no longer =0.7.0= in =gemset.nix=.
+   g. If it is still =0.7.0=, the new version failed to take effect and you have
+      reproduced the issue.
